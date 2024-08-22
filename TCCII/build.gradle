@@ -1,0 +1,48 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.3.2'
+	id 'io.spring.dependency-management' version '1.1.6'
+}
+
+group = 'tcc.fundatec.org'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// Dependência para Spring Boot Data JPA
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	// Dependência para validação
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+	// Dependência para Spring Boot Security
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+
+	// Dependência para Spring Boot Web
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	// Dependência para o driver MySQL
+	implementation 'mysql:mysql-connector-java:8.0.32'
+
+	// Dependência para Lombok
+	compileOnly 'org.projectlombok:lombok:1.18.26'
+	annotationProcessor 'org.projectlombok:lombok:1.18.26'
+
+	// Dependências para testes
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
